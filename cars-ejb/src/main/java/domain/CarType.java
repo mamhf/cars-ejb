@@ -56,22 +56,29 @@ public class CarType implements Serializable {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if(obj==null)
-			return false;
-		if(obj==this)
-			return true;
-		if(!(obj instanceof CarType))
-			return false;
-		CarType other = (CarType) obj;
-		if(this.name.equals(other.name))
-			return true;
-		else
-			return false;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
 	}
 
 	@Override
-	public int hashCode() {
-		return name.hashCode();
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CarType other = (CarType) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
+	
+	
 }
